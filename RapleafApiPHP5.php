@@ -179,7 +179,7 @@ class RapleafApiPHP5 {
      * emails and not wanting the entire script to fail.
      * 
      * @param array $request
-     * @return void
+     * @return mix array on success, Boolean False on failure
      * @access protected
      */
     protected function _get_json_response(array $request) {
