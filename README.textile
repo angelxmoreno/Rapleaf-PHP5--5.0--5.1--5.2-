@@ -1,0 +1,56 @@
+===========================
+RAPLEAF DIRECT API FOR PHP 5.0, 5.1 and 5.2
+===========================
+
+Author: Angel S. Moreno (angelxmoreno@gmail.com)
+
+For general information regarding API, visit https://www.rapleaf.com/developers/api_docs/personalization/direct
+The personalization API's terms and conditions are stated at http://www.rapleaf.com/developers/api_usage
+
+This PHP Class was created because the PHP Lib provided by Rapleaf was not compatible with my PHP 5.2 server.
+
+h1. Usage and examples:
+First you need to include the PHP file and instantiate RapleafApiPHP5 object by passing you api key:
+
+<pre><code>
+include 'RapleafApiPHP5.php';
+$api_key = 'YouAPIKeyHere';
+$rpClient = new RapleafApiPHP5($api_key);
+</code></pre>
+
+You now have access to the methods in the RapleafApiPHP5 class. Below are examples on how to use it:
+
+<pre><code>
+//the email is case-crazy to show when doing a strtolower is needed
+$email = 'AnGeLxMoReNo@GmAiL.CoM';
+$first_name = 'Angel';
+$last_name = 'Moreno';
+$street = '123 west no way street';
+$city = 'Beverly Hills';
+$state = 'CA';
+$zip4 = '90210-1234';
+
+//query_by_email
+$response = $rpClient->query_by_email($email);
+
+//query_by_email hashed
+$response = $rpClient->query_by_email($email, true);
+
+//query_by_md5
+$response = $rpClient->query_by_md5(md5(strtolower($email)));
+
+//query_by_sha1
+$response = $rpClient->query_by_sha1(sha1(strtolower($email)));
+
+//query_by_name_and_postal no email
+$response = $rpClient->query_by_name_and_postal($first_name, $last_name, $street, $city, $state);
+
+//query_by_name_and_postal with email
+$response = $rpClient->query_by_name_and_postal($first_name, $last_name, $street, $city, $state, $email);
+
+//query_by_name_and_zip no email
+$response = $rpClient->query_by_name_and_zip($first_name, $last_name, $zip4);
+
+//query_by_name_and_zip with email
+$response = $rpClient->query_by_name_and_zip($first_name, $last_name, $zip4, $email);
+</code></pre>
