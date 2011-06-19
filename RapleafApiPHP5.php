@@ -121,10 +121,6 @@ class RapleafApiPHP5 {
      * @access public
      */
     public function query_by_name_and_postal($first_name, $last_name, $street, $city, $state, $email = null) {
-        /* Takes first name, last name, and postal (street, city, and state acronym),
-         * and returns a hash which maps attribute fields onto attributes
-         * Though not necessary, adding an e-mail increases hit rate
-         */
         $request = array(
             'first_name' => $first_name,
             'last_name' => $last_name,
@@ -176,17 +172,17 @@ class RapleafApiPHP5 {
 
     /**
      * Sends a request to the Rapleaf API server
-     *
+     * Note that a notice is triggered an HTTP response code
+     * other than 200 is sent back. In this case, both the error code
+     * the error code and error body are printed out and False is returned.
+     * This seemed more practical when going through dozens or thousands of
+     * emails and not wanting the entire script to fail.
+     * 
      * @param array $request
      * @return void
      * @access protected
      */
     protected function _get_json_response(array $request) {
-        /* Pre: Path is an extension to personalize.rapleaf.com
-         * Note that an exception is raised if an HTTP response code
-         * other than 200 is sent back. In this case, both the error code
-         * the error code and error body are accessible from the exception raised
-         */
         $url = $this->_buildUrl($request);
         curl_setopt($this->_curlHandle, CURLOPT_URL, $url);
         $json_string = curl_exec($this->_curlHandle);
@@ -194,6 +190,7 @@ class RapleafApiPHP5 {
 
         if ($response_code < 200 || $response_code >= 300) {
             trigger_error("Error Code: " . $response_code . "\nError Body: " . $json_string, 8);
+            return false;
         } else {
             $response = json_decode($json_string, TRUE);
             return $response;
@@ -232,7 +229,5 @@ class RapleafApiPHP5 {
     protected function __destruct() {
         curl_close($this->_curlHandle);
     }
-
 }
-
 ?>
