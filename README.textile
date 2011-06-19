@@ -2,8 +2,8 @@ h1. RAPLEAF DIRECT API FOR PHP 5.0, 5.1 and 5.2
 
 Author: Angel S. Moreno (angelxmoreno@gmail.com)
 
-For general information regarding API, visit https://www.rapleaf.com/developers/api_docs/personalization/direct
-The personalization API's terms and conditions are stated at http://www.rapleaf.com/developers/api_usage
+For general information regarding API, visit <a href="https://www.rapleaf.com/developers/api_docs/personalization/direct" target="_blank">https://www.rapleaf.com/developers/api_docs/personalization/direct</a>
+The personalization API's terms and conditions are stated at <a href="http://www.rapleaf.com/developers/api_usage" target="_blank">http://www.rapleaf.com/developers/api_usage</a>
 
 h2. Background
 
