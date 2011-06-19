@@ -1,15 +1,22 @@
-===========================
-RAPLEAF DIRECT API FOR PHP 5.0, 5.1 and 5.2
-===========================
+h1. RAPLEAF DIRECT API FOR PHP 5.0, 5.1 and 5.2
 
 Author: Angel S. Moreno (angelxmoreno@gmail.com)
 
 For general information regarding API, visit https://www.rapleaf.com/developers/api_docs/personalization/direct
 The personalization API's terms and conditions are stated at http://www.rapleaf.com/developers/api_usage
 
+h2. Background
+
 This PHP Class was created because the PHP Lib provided by Rapleaf was not compatible with my PHP 5.2 server.
 
-h1. Usage and examples:
+h2. Requirements
+
+# PHP 5
+# cURL with SSL
+# A Rapleaf API Key
+
+h2. Usage and examples
+
 First you need to include the PHP file and instantiate RapleafApiPHP5 object by passing you api key:
 
 <pre><code>
